@@ -12,6 +12,9 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
+        $dt = Carbon::now();
+        $dateNow = $dt->toDateTimeString();
+        
         // create a new admin when seeding
         $admin = new Admin();
         $admin->name = 'Hoang Xuan Khanh';

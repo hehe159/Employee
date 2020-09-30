@@ -37,34 +37,6 @@ class Employee extends Model
     /**
      * @return object
      */
-    public function empDivision(){
-        return $this->belongsTo('App\Models\Division','division_id');
-    }
-
-    /**
-     * @return object
-     */
-    public function empCity(){
-        return $this->belongsTo('App\Models\City','city_id');
-    }
-
-    /**
-     * @return object
-     */
-    public function empDistrict(){
-        return $this->belongsTo('App\Models\District','district_id');
-    }
-
-    /**
-     * @return object
-     */
-    public function empWard(){
-        return $this->belongsTo('App\Models\Ward','ward_id');
-    }
-
-    /**
-     * @return object
-     */
     public function empGender(){
         return $this->belongsTo('App\Models\Gender','gender_id');
     }

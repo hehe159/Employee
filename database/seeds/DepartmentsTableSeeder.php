@@ -14,5 +14,6 @@ class DepartmentsTableSeeder extends Seeder
     {
         $department = new Department();
         $department->dept_name = 'Trung tâm Công nghệ Thông tin';
+        $department->save();
     }
 }
