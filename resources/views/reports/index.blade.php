@@ -38,7 +38,8 @@
                         <th>Ảnh</th>
                         <th>Tên</th>
                         <th>Đơn vị</th>
-                        <th>Ngày vào Đảng</th>  
+                        <th>Ngày vào Đảng</th>
+                        <th>Tùy chọn</th>
                     </tr>
                 </thead>
                 <tbody id="emp-table">
