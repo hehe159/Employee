@@ -4,7 +4,7 @@
         <div class="row">
             <div class="card col s12 m12 l12 xl12 mt-20">
                 <div>
-                <h4 class="center grey-text text-darken-2 card-title">Create New Employee</h4>
+                <h4 class="center grey-text text-darken-2 card-title">Thêm Đảng viên mới</h4>
                 </div>
                 <hr>
                 <div class="card-content">
@@ -61,46 +61,6 @@
                                 </select>
                                 <label>Đơn vị</label>
                             </div>
-                            <div class="input-field col s12 m12 l12 xl8 offset-xl2">
-                                <i class="material-icons prefix">business</i>
-                                <select name="division">
-                                    <option value="" disabled {{ old('division') ? '' : 'selected' }}>Chọn phòng ban</option>
-                                    @foreach($divisions as $division)
-                                        <option value="{{$division->id}}" {{ old('division') ? 'selected' : '' }}>{{$division->division_name}}</option>
-                                    @endforeach
-                                </select>
-                                <label>Phòng ban</label>
-                            </div>
-                            <div class="input-field col s12 m6 l6 xl4">
-                                <i class="material-icons prefix">location_city</i>
-                                <select name="city">
-                                    <option value="" disabled {{ old('city') ? '' : 'selected' }}>Chọn tỉnh thành</option>
-                                    @foreach($cities as $city)
-                                        <option value="{{$city->id}}" {{ old('city') ? 'selected' : '' }} >{{$city->city_name}}</option>
-                                    @endforeach
-                                </select>
-                                <label>Tỉnh thành</label>
-                            </div>
-                            <div class="input-field col s12 m6 l6 xl4">
-                                <i class="material-icons prefix">location_city</i>
-                                <select name="district">
-                                    <option value="" disabled {{ old('district') ? '' : 'selected' }}>Chọn quận huyện</option>
-                                    @foreach($districts as $district)
-                                        <option value="{{$district->id}}" {{ old('district') ? 'selected' : '' }} >{{$district->district_name}}</option>
-                                    @endforeach
-                                </select>
-                                <label>Quận huyện</label>
-                            </div>
-                            <div class="input-field col s12 m6 l6 xl4">
-                                <i class="material-icons prefix">location_city</i>
-                                <select name="ward">
-                                    <option value="" disabled {{ old('ward') ? '' : 'selected' }}>Chọn xã phường</option>
-                                    @foreach($wards as $ward)
-                                        <option value="{{$ward->id}}" {{ old('ward') ? 'selected' : '' }} >{{$ward->ward_name}}</option>
-                                    @endforeach
-                                </select>
-                                <label>Quận huyện</label>
-                            </div>
                             <div class="input-field col m6 l6 xl4 offset-xl2">
                                 <i class="material-icons prefix">date_range</i>
                                 <input type="text" name="join_date" id="join_date" class="datepicker" value="{{old('join_date') ? : ''}}">
@@ -126,12 +86,12 @@
                         </div>
                         @csrf()
                         <div class="row">
-                            <button type="submit" class="btn waves-effect waves-light col s8 offset-s2 m4 offset-m4 l4 offset-l4 xl4 offset-xl4">Add</button>
+                            <button type="submit" class="btn waves-effect waves-light col s8 offset-s2 m4 offset-m4 l4 offset-l4 xl4 offset-xl4">Thêm</button>
                         </div>
                     </form>
                 </div>
                 <div class="card-action">
-                    <a href="/employees">Go Back</a>
+                    <a href="/employees">Quay lại</a>
                 </div>
             </div>
         </div>

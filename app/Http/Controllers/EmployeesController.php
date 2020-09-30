@@ -5,11 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Employee;
-use App\Models\City;
-use App\Models\District;
-use App\Models\Ward;
 use App\Models\Department;
-use App\Models\Division;
 use App\Models\Gender;
 use DB;
 
@@ -45,25 +41,17 @@ class EmployeesController extends Controller
          *  name on the department dropdown in the view
          */
         $departments = Department::orderBy('dept_name','asc')->get();
+        
         /**
          *  this and other objects works the same as department
          */
-        
-        $cities = City::orderBy('city_name','asc')->get();
-        $districts = District::orderBy('district_name','asc')->get();
-        $wards = Ward::orderBy('ward_name','asc')->get();
-        $departments = Deparment::orderBy('dept_name','asc')->get();
-        $divisions = Division::orderBy('division_name','asc')->get();
         $genders = Gender::orderBy('gender_name','asc')->get();
+
         /**
          *  return the view with an array of all these objects
          */
         return view('employee.create')->with([
-            'cities'       => $cities,
-            'districts'    => $districts,            
-            'wards'        => $wards,
             'departments'  => $departments,
-            'divisions'    => $divisions,
             'genders'      => $genders,
         ]);
     }
@@ -136,21 +124,13 @@ class EmployeesController extends Controller
         /**
          *  this is same as create but with an existing
          *  employee
-         */        
-        $cities       = City::orderBy('city_name','asc')->get();
-        $districts    = District::orderBy('district_name','asc')->get();
-        $wards        = Ward::orderBy('ward_name','asc')->get();
+         */
         $departments  = Department::orderBy('dept_name','asc')->get();
-        $divisions    = Division::orderBy('division_name','asc')->get();
         $genders      = Gender::orderBy('gender_name','asc')->get();
 
         $employee = Employee::find($id);
         return view('employee.edit')->with([
-            'cities'       => $cities,
-            'district'     => $states,
-            'ward'         => $salaries,
             'departments'  => $departments,
-            'divisions'    => $divisions,
             'genders'      => $genders,
             'employee'     => $employee
         ]);
@@ -240,10 +220,6 @@ class EmployeesController extends Controller
             'phone'          =>  'required|max:13',
             'gender'         =>  'required',
             'department'     =>  'required',
-            'division'       =>  'required',
-            'city'           =>  'required',
-            'district'       =>  'required',
-            'ward'           =>  'required',
             'join_date'      =>  'required',
             'birth_date'     =>  'required',
             'email'          =>  'required|email|unique:employees,email,'.($id ? : '' ).'|max:250',
@@ -285,11 +261,7 @@ class EmployeesController extends Controller
         //Format Date then insert it to the database
         $employee->birth_date    = date('Y-m-d', strtotime(str_replace('-', '/', $request->input('birth_date'))));
         $employee->gender_id     = $request->input('gender');
-        $employee->city_id       = $request->input('city');
-        $employee->district_id   = $request->input('district');
-        $employee->ward_id       = $request->input('ward');
-        $employee->dept_id       = $request->input('department');
-        $employee->division_id   = $request->input('division');        
+        $employee->dept_id       = $request->input('department');       
         
         /**
          *  we are checking if there is an image

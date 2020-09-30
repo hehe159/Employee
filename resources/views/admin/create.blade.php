@@ -12,15 +12,9 @@
                         <div class="row">
                             <div class="input-field col s12 m8 offset-m2 l8 offset-l2 xl8 offset-xl2">
                                 <i class="material-icons prefix">person_outline</i>
-                                <input type="text" name="first_name" id="first_name" value="{{Request::old('first_name') ? : ''}}">
-                                <label for="first_name">First Name</label>
-                                <span class="{{$errors->has('first_name') ? 'helper-text red-text' : ''}}">{{$errors->first('first_name')}}</span>
-                            </div>
-                            <div class="input-field col s12 m8 offset-m2 l8 offset-l2 xl8 offset-xl2">
-                                <i class="material-icons prefix">person_outline</i>
-                                <input type="text" name="last_name" id="last_name" value="{{Request::old('last_name') ? : ''}}">
-                                <label for="last_name">Last Name</label>
-                                <span class="{{$errors->has('first_name') ? 'helper-text red-text' : ''}}">{{$errors->first('first_name')}}</span>
+                                <input type="text" name="name" id="name" value="{{Request::old('name') ? : ''}}">
+                                <label for="name">Họ tên</label>
+                                <span class="{{$errors->has('name') ? 'helper-text red-text' : ''}}">{{$errors->first('name')}}</span>
                             </div>
                             <div class="input-field col s12 m8 offset-m2 l8 offset-l2 xl8 offset-xl2">
                                 <i class="material-icons prefix">person</i>

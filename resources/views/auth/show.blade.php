@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="col m8 l8 xl8">
-                        <h5 class="pl-15 mt-20">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h5>
+                        <h5 class="pl-15 mt-20">{{Auth::user()->name}}</h5>
                         <p class="pl-15 mt-20"><i class="material-icons left">person</i>{{Auth::user()->username}}</p>
                         <p class="pl-15 mt-20"><i class="material-icons left">email</i>{{Auth::user()->email}}</p>
                     </div>

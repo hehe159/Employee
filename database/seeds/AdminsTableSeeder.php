@@ -14,10 +14,9 @@ class AdminsTableSeeder extends Seeder
     {
         // create a new admin when seeding
         $admin = new Admin();
-        $admin->first_name = 'Hoang';
-        $admin->last_name = 'Xuan Khanh';
+        $admin->name = 'Hoang Xuan Khanh';
         $admin->username = 'admin';
-        $admin->email = 'khanh1509@gmail.com';
+        $admin->email = 'admin@gmail.com';
         $admin->password = bcrypt('password');
         $admin->picture = 'no_image.png';
         $admin->save();

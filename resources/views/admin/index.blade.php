@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <h4 class="grey-text text-darken-2 center">Admin Management</h4>
+    <h4 class="grey-text text-darken-2 center">Quản lý Admin</h4>
     
     {{-- Search --}}
     <div class="row mb-0">
@@ -9,7 +9,7 @@
             <li>
                 <div class="collapsible-header">
                     <i class="material-icons">search</i>
-                    Search Admin
+                    Tìm kiếm Admin
                 </div>
                 <div class="collapsible-body">
                     <div class="row mb-0">
@@ -22,15 +22,14 @@
                             </div>
                             <div class="input-field col s12 m6 l4 xl4">
                                 <select name="options" id="options">
-                                    <option value="first_name">First Name</option>
-                                    <option value="last_name">Last Name</option>
-                                    <option value="username">Username</option>
+                                    <option value="name">Họ tên</option>
+                                    <option value="username">Tài khoản</option>
                                     <option value="email">Email</option>
                                 </select>
-                                <label for="options">Search by:</label>
+                                <label for="options">Tìm kiếm bằng:</label>
                             </div>
                             <br>
-                            <button type="submit" class="btn waves-effect waves-light col s6 offset-s3 m4 offset-m4 l2 xl2">Search</button>
+                            <button type="submit" class="btn waves-effect waves-light col s6 offset-s3 m4 offset-m4 l2 xl2">Tìm kiếm</button>
                         </form>
                     </div>
                 </div>

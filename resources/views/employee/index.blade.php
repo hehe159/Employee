@@ -8,7 +8,7 @@
             <li>
                 <div class="collapsible-header">
                     <i class="material-icons">search</i>
-                    Tìm kiếm Đảng viên
+                    Tìm kiếm
                 </div>
                 <div class="collapsible-body">
                     <div class="row mb-0">
@@ -16,7 +16,7 @@
                             @csrf()
                             <div class="input-field col s12 m6 l5 xl6">
                                 <input id="search" type="text" name="search" >
-                                <label for="search">Tìm kiếm Đảng viên</label>
+                                <label for="search">Tìm kiếm</label>
                                 <span class="{{$errors->has('search') ? 'helper-text red-text' : '' }}">{{$errors->has('search') ? $errors->first('search') : '' }}</span>
                             </div>
                             <div class="input-field col s12 m6 l4 xl4">
@@ -51,7 +51,6 @@
                             <th>Ảnh</th>
                             <th>Họ tên</th>
                             <th>Đơn vị</th>
-                            <th>Phòng ban</th>
                             <th>Ngày vào Đảng</th>
                             <th>Options</th>
                         </tr>
@@ -67,7 +66,6 @@
                                     </td>
                                     <td>{{$employee->name}}</td>
                                     <td>{{$employee->empDepartment->dept_name}}</td>
-                                    <td>{{$employee->empDivision->division_name}}</td>
                                     <td>{{$employee->join_date}}</td>
                                     <td>
                                     <a href="{{route('employees.show',$employee->id)}}" class="btn btn-small btn-floating waves=effect waves-light teal lighten-2"><i class="material-icons">list</i></a>
