@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Employee;
+use App\Models\Employee;
 use DB;
 use Carbon\Carbon;
 use PDF;

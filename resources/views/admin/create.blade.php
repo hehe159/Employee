@@ -19,13 +19,13 @@
                             <div class="input-field col s12 m8 offset-m2 l8 offset-l2 xl8 offset-xl2">
                                 <i class="material-icons prefix">person</i>
                                 <input type="text" name="username" id="username" value="{{Request::old('username') ? : ''}}">
-                                <label for="username">Username</label>
+                                <label for="username">Tài khoản</label>
                                 <span class="{{$errors->has('username') ? 'helper-text red-text' : ''}}">{{$errors->first('username')}}</span>
                             </div>
                             <div class="input-field col s12 m8 offset-m2 l8 offset-l2 offset-l2 xl8 offset-xl2">
                                 <i class="material-icons prefix">lock</i>
                                 <input type="password" name="password" id="password" value="{{Request::old('password') ? : ''}}">
-                                <label for="password">Password</label>
+                                <label for="password">Mật khẩu</label>
                                 <span class="{{$errors->has('password') ? 'helper-text red-text' : ''}}">{{$errors->has('password') ? $errors->first('password') : ''}}</span>
                             </div>
                             <div class="input-field col s12 m8 offset-m2 l8 offset-l2 offset-l2 xl8 offset-xl2">
@@ -36,7 +36,7 @@
                             </div>
                             <div class="file-field input-field col s12 m8 offset-m2 l8 offset-l2 xl8 offset-xl2">
                                 <div class="btn">
-                                    <span>Picture</span>
+                                    <span>Ảnh</span>
                                     <input type="file" name="picture">
                                 </div>
                                 <div class="file-path-wrapper">

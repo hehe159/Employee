@@ -4,7 +4,7 @@
         <li>
             <div class="collapsible-header">
                 <i class="material-icons">search</i>
-                Search {{$title}}(s)
+                Tìm kiếm {{$title}}
             </div>
             <div class="collapsible-body">
                 <div class="row mb-0">
@@ -16,12 +16,12 @@
                             @else
                                 <input id="search" type="text" name="search" >
                             @endif
-                            <label for="search">{{$title}} Name</label>
+                            <label for="search">Tên {{$title}}</label>
                             <span class="{{$errors->has('search') ? 'helper-text red-text' : '' }}">
                                 {{$errors->has('search') ? $errors->first('search') : '' }}
                             </span>
                         </div>
-                        <button type="submit" class="btn waves-effect waves-light mt-5 col s6 offset-s3 m2 l2">Search</button>
+                        <button type="submit" class="btn waves-effect waves-light mt-5 col s6 offset-s3 m2 l2">Tìm kiếm</button>
                     </form>
                 </div>
             </div>

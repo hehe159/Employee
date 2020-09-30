@@ -49,7 +49,7 @@
                                         <option value="{{$gender->id}}" {{ old('gender')? 'selected' : '' }}>{{$gender->gender_name}}</option>
                                     @endforeach
                                 </select>
-                                <label>Gender</label>
+                                <label>Giới tính</label>
                             </div>
                             <div class="input-field col s12 m12 l12 xl8 offset-xl2">
                             <i class="material-icons prefix">business</i>
@@ -75,7 +75,7 @@
                             </div>                            
                             <div class="file-field input-field col s12 m12 l12 xl8 offset-xl2">
                                 <div class="btn">
-                                    <span>Picture</span>
+                                    <span>Ảnh</span>
                                     <input type="file" name="picture">
                                 </div>
                                 <div class="file-path-wrapper">

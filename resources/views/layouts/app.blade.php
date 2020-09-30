@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/materialize.css')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Employee Management System</title>
+    <title>Quản lý Đảng viên</title>
 </head>
 <body class="grey lighten-4">
     <!-- 

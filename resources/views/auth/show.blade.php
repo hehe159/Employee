@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="card-panel grey-text text-darken-2 mt-20">
-            <h4 class="grey-text text-darken-1 center">My Details</h4>
+            <h4 class="grey-text text-darken-1 center">Thông tin cá nhân</h4>
             <div class="row">
                 <div class="row collection mt-20">
                     <!-- Show this image on small devices -->
@@ -21,7 +21,7 @@
                         <img class="p5 card-panel emp-img-big" src="{{asset('storage/admins/'.Auth::user()->picture)}}">
                     </div>
                 </div>
-                <a class="btn orange col s8 offset-s2 m6 offset-m3 l4 offset-l4 xl4 offset-xl4" href="{{route('admins.edit',Auth::user()->id)}}">Update</a>
+                <a class="btn orange col s8 offset-s2 m6 offset-m3 l4 offset-l4 xl4 offset-xl4" href="{{route('admins.edit',Auth::user()->id)}}">Cập nhật</a>
             </div>
         </div>
     </div>

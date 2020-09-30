@@ -13,10 +13,10 @@ class GendersTableSeeder extends Seeder
     public function run()
     {
         $gender = new Gender();
-        $gender->gender_name = 'Male';
+        $gender->gender_name = 'Nam';
         $gender->save();
         $gender = new Gender();
-        $gender->gender_name = 'Female';
+        $gender->gender_name = 'Nữ';
         $gender->save();
     }
 }
