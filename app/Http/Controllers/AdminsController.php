@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Admin;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,7 +55,7 @@ class AdminsController extends Controller
         $this->validateRequest($request,NULL);
         $fileNameToStore = $this->handleImageUpload($request);
         $this->setAdmin($request ,$admin, $fileNameToStore);
-        return redirect('/admins')->with('info','New Admin has been created!');
+        return redirect('/admins')->with('info','Tạo mới Admin thành công!');
     }
 
     /**
@@ -92,7 +92,7 @@ class AdminsController extends Controller
         }
         
         $this->setAdmin($request, $admin ,$fileNameToStore);
-        return redirect('/admins')->with('info','selected admin has been updated');
+        return redirect('/admins')->with('info','Cập nhật thành công!');
     }
 
     /**
@@ -109,7 +109,7 @@ class AdminsController extends Controller
          */
         if($id == Auth::user()->id){
             //redirect to admins route
-            return redirect('/admins')->with('info','Authenticated Admin cannot be deleted!');
+            return redirect('/admins')->with('info','Không thể xoá!');
         }
         
         $admin = Admin::find($id);
@@ -117,7 +117,7 @@ class AdminsController extends Controller
         //delete the admin picture
         Storage::delete('public/admins/'.$admin->picture);
         $admin->delete();
-        return redirect('/admins')->with('info','selected admin has been deleted!');
+        return redirect('/admins')->with('info','Xoá thành công!');
     }
 
     /**
@@ -145,8 +145,7 @@ class AdminsController extends Controller
     private function validateRequest(Request $request, $id)
     {
         $this->validate($request,[
-            'first_name'   =>  'required|min:3',
-            'last_name'    =>  'required|min:3',
+            'name'   =>  'required|min:3',
             //if we are updating admin but not changing password.
             'password'     =>  ''.( $id ? 'nullable|min:7' : 'required|min:7' ),
             'username'     =>  'required|unique:admins,username,'.($id ? : '' ).'|min:3',
@@ -159,8 +158,7 @@ class AdminsController extends Controller
      * Add or update an admin
      */
     private function setAdmin(Request $request , Admin $admin , $fileNameToStore){
-        $admin->first_name = $request->input('first_name');
-        $admin->last_name = $request->input('last_name');
+        $admin->name = $request->input('name');
         $admin->username = $request->input('username');
         $admin->email = $request->input('email');
         if($request->input('password') != NULL){

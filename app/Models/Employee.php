@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -31,48 +31,41 @@ class Employee extends Model
          *  first parameter is the model and second is a
          *  foreign key.
          */
-        return $this->belongsTo('App\Department','dept_id');
+        return $this->belongsTo('App\Models\Department','dept_id');
     }
 
     /**
      * @return object
      */
     public function empDivision(){
-        return $this->belongsTo('App\Division','division_id');
-    }
-
-    /**
-     * @return object
-     */
-    public function empCountry(){
-        return $this->belongsTo('App\Country','country_id');
-    }
-
-    /**
-     * @return object
-     */
-    public function empState(){
-        return $this->belongsTo('App\State','state_id');
+        return $this->belongsTo('App\Models\Division','division_id');
     }
 
     /**
      * @return object
      */
     public function empCity(){
-        return $this->belongsTo('App\City','city_id');
+        return $this->belongsTo('App\Models\City','city_id');
     }
 
     /**
      * @return object
      */
-    public function empSalary(){
-        return $this->belongsTo('App\Salary','salary_id');
+    public function empDistrict(){
+        return $this->belongsTo('App\Models\District','district_id');
+    }
+
+    /**
+     * @return object
+     */
+    public function empWard(){
+        return $this->belongsTo('App\Models\Ward','ward_id');
     }
 
     /**
      * @return object
      */
     public function empGender(){
-        return $this->belongsTo('App\Gender','gender_id');
+        return $this->belongsTo('App\Models\Gender','gender_id');
     }
 }

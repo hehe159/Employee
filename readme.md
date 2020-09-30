@@ -52,8 +52,8 @@ This Application is using Laravel, Materialize-css version 1.0.0 alpha-4 , mater
 > In Laravel, all the requests are directed to index.php in public directory so, please use a Virtual Host instead of opening it from http://localhost/your-laravel-project/public (It doesn't work that way).
 
 #### Admin Credentials
-- Email :- admin@admin.com
-- Password :- Password
+- Email : admin@admin.com
+- Password : password
 
 #### ScreenShot
 

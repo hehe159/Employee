@@ -24,29 +24,29 @@
 Route::get('/dashboard','DashboardController@index')->name('dashboard');
 
 /**
- *  Departments Route(s)
- * 
- */
-Route::resource('/departments','DepartmentsController');
-Route::post('/departments/search','DepartmentsController@search')->name('departments.search');
-
-/**
- *  Countries Route(s)
- */
-Route::resource('/countries','CountriesController');
-Route::post('/countries/search','CountriesController@search')->name('countries.search');
-
-/**
  *  Cities Route(s)
  */
 Route::resource('/cities','CitiesController');
 Route::post('/cities/search','CitiesController@search')->name('cities.search');
 
 /**
- *  Salaries Route(s)
+ *  Districts Route(s)
  */
-Route::resource('/salaries','SalariesController');
-Route::post('/salaries/search','SalariesController@search')->name('salaries.search');
+Route::resource('/districts','DistrictsController');
+Route::post('/districts/search','DistrictsController@search')->name('districts.search');
+
+/**
+ *  Districts Route(s)
+ */
+Route::resource('/wards','WardsController');
+Route::post('/wards/search','WardsController@search')->name('wards.search');
+
+/**
+ *  Departments Route(s)
+ * 
+ */
+Route::resource('/departments','DepartmentsController');
+Route::post('/departments/search','DepartmentsController@search')->name('departments.search');
 
 /**
  *  Divisions Route(s)
@@ -61,7 +61,7 @@ Route::resource('/states','StatesController');
 Route::post('/states/search','StatesController@search')->name('states.search');
 
 /**
- *  States Route(s)
+ *  Employee Route(s)
  */
 Route::resource('/employees','EmployeesController');
 

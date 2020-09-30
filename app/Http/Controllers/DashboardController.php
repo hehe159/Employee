@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Employee;
-use App\Department;
-use App\Division;
-use App\Country;
-use App\City;
-use App\State;
-use App\Salary;
-use App\Admin;
+use App\Models\Employee;
+use App\Models\Department;
+use App\Models\Division;
+use App\Models\City;
+use App\Models\District;
+use App\Models\Ward;
+use App\Models\Evaluation;
+use App\Models\Admin;
 use Carbon\Carbon;
 use DB;
 
@@ -50,13 +50,12 @@ class DashboardController extends Controller
         $emp_count_4 = Employee::whereBetween('join_date',[$prev_date4,$prev_date3])->count();
 
         $t_admins = Admin::all()->count();
-        $t_employees = Employee::all()->count();
-        $t_countries = Country::all()->count();
-        $t_states = State::all()->count();
+        $t_employees = Employee::all()->count();        
         $t_cities = City::all()->count();
+        $t_districts = District::all()->count();
+        $t_wards = Ward::all()->count();
         $t_departments = Department::all()->count();
         $t_divisions = Division::all()->count();
-        $t_salaries = Salary::all()->count();
 
 
         return view('dashboard.index')
@@ -66,12 +65,11 @@ class DashboardController extends Controller
                 'emp_count_3'     =>  $emp_count_3,
                 'emp_count_4'     =>  $emp_count_4,
                 't_employees'     =>  $t_employees,
-                't_countries'     =>  $t_countries,
                 't_cities'        =>  $t_cities,
-                't_states'        =>  $t_states,
-                't_salaries'      =>  $t_salaries,
-                't_divisions'     =>  $t_divisions,
+                't_districts'     =>  $t_districts,
+                't_wards'         =>  $t_wards,
                 't_departments'   =>  $t_departments,
+                't_divisions'     =>  $t_divisions,                            
                 't_admins'        =>  $t_admins
             ]);
     }

@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col s7 xl7">
                             <i class="material-icons medium white-text pt-5">person</i>
-                            <h6 class="no-padding txt-md">Admins</h6>
+                            <h6 class="no-padding txt-md">Quản trị</h6>
                         </div>
                         <div class="col s5 xl5">
                             <p class="no-padding center mt txt-sm">Total({{$t_admins}})</p>
@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col s7 xl7">
                             <i class="material-icons medium white-text pt-5">person_outline</i>
-                            <h6 class="no-padding txt-md">Employees</h6>
+                            <h6 class="no-padding txt-md">Đảng viên</h6>
                         </div>
                         <div class="col s5 xl5">
                             <p class="no-padding center mt txt-sm">Total({{$t_employees}})</p>
@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col s7 xl7">
                             <i class="material-icons medium white-text pt-5">business</i>
-                            <h6 class="no-padding txt-md">Departments</h6>
+                            <h6 class="no-padding txt-md">Đơn vị</h6>
                         </div>
                         <div class="col s5 xl5">
                             <p class="no-padding center mt txt-sm">Total({{$t_departments}})</p>
@@ -42,12 +42,25 @@
                     </div>
                 </div>
             </a>
-            <a href="/cities" class="white-text hide-on-small-only">
+            <a href="/divisions" class="white-text hide-on-small-only">
                 <div class="mx-20 card-panel purple lighten-1 col s8 offset-s2 m4 l4 xl2">
                     <div class="row">
                         <div class="col s7 xl7">
+                            <i class="material-icons medium white-text pt-5">business</i>
+                            <h6 class="no-padding txt-md">Phòng ban</h6>
+                        </div>
+                        <div class="col s5 xl5">
+                            <p class="no-padding center mt txt-sm">Total({{$t_divisions}})</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/cities" class="white-text">
+                <div class="mx-20 card-panel light-blue col s8 offset-s2 m4 offset-m2 l4 offset-l2 xl2 offset-xl1 ml-14">
+                    <div class="row">
+                        <div class="col s7 xl7">
                             <i class="material-icons medium white-text pt-5">location_city</i>
-                            <h6 class="no-padding txt-md">Cities</h6>
+                            <h6 class="no-padding txt-md">Tỉnh thành</h6>
                         </div>
                         <div class="col s5 xl5">
                             <p class="no-padding center mt txt-sm">Total({{$t_cities}})</p>
@@ -55,54 +68,41 @@
                     </div>
                 </div>
             </a>
-            <a href="/countries" class="white-text">
-                <div class="mx-20 card-panel light-blue col s8 offset-s2 m4 offset-m2 l4 offset-l2 xl2 offset-xl1 ml-14">
-                    <div class="row">
-                        <div class="col s7 xl7">
-                            <i class="material-icons medium white-text pt-5">terrain</i>
-                            <h6 class="no-padding txt-md">Countries</h6>
-                        </div>
-                        <div class="col s5 xl5">
-                            <p class="no-padding center mt txt-sm">Total({{$t_countries}})</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="/salaries" class="white-text hide-on-small-only">
+            <a href="/districts" class="white-text hide-on-small-only">
                 <div class="card-panel green col s8 offset-s2 m4 l4 xl2 mx-20">
                     <div class="row">
                         <div class="col s7 xl7">
-                            <i class="material-icons medium white-text pt-5">attach_money</i>
-                            <h6 class="no-padding txt-md">Salaries</h6>
+                            <i class="material-icons medium white-text pt-5">location_city</i>
+                            <h6 class="no-padding txt-md">Quận huyện</h6>
                         </div>
                         <div class="col s5 xl5">
-                            <p class="no-padding center mt txt-sm">Total({{$t_salaries}})</p>
+                            <p class="no-padding center mt txt-sm">Total({{$t_districts}})</p>
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="/states" class="white-text hide-on-small-only">
+            <a href="/wards" class="white-text hide-on-small-only">
                 <div class="card-panel blue col s8 offset-s2 m4 offset-m2 l4 offset-l2 xl2 mx-20">
                     <div class="row">
                         <div class="col s7 xl7">
-                            <i class="material-icons medium white-text pt-5">grid_on</i>
-                            <h6 class="no-padding txt-md">States</h6>
+                            <i class="material-icons medium white-text pt-5">location_city</i>
+                            <h6 class="no-padding txt-md">Phường xã</h6>
                         </div>
                         <div class="col s5 xl5">
-                            <p class="no-padding center mt txt-sm">Total({{$t_states}})</p>
+                            <p class="no-padding center mt txt-sm">Total({{$t_wards}})</p>
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="/divisions" class="white-text hide-on-small-only">
+            <a href="/evaluations" class="white-text hide-on-small-only">
                 <div class="mx-20 card-panel orange col s8 offset-s2 m4 l4 xl2">
                     <div class="row">
                         <div class="col s7 xl7">
                             <i class="material-icons medium white-text pt-5">business</i>
-                            <h6 class="no-padding txt-md">Divisions</h6>
+                            <h6 class="no-padding txt-md">Đánh giá</h6>
                         </div>
                         <div class="col s5 xl5">
-                            <p class="no-padding center mt txt-sm">Total({{$t_divisions}})</p>
+                            <p class="no-padding center mt txt-sm"></p>
                         </div>
                     </div>
                 </div>

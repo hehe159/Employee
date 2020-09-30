@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Country;
+use App\Models\District;
 
-class CountriesController extends Controller
+class DistrictsController extends Controller
 {
     /**
      *  Only authenticated users can access this controller
@@ -26,8 +26,8 @@ class CountriesController extends Controller
          *  they are all the same.
          */
         
-        $countries = Country::Paginate(5);
-        return view('sys_mg.countries.index')->with('countries',$countries);
+        $districts = District::Paginate(5);
+        return view('sys_mg.districts.index')->with('districts',$districts);
     }
 
     /**
@@ -37,7 +37,7 @@ class CountriesController extends Controller
      */
     public function create()
     {
-        return view('sys_mg.countries.create');
+        return view('sys_mg.districts.create');
     }
 
     /**
@@ -49,12 +49,12 @@ class CountriesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'country_name' => 'required|unique:countries|min:3'
+            'district_name' => 'required|unique:districts|min:3'
         ]);
-        $country = new Country();
-        $country->country_name = $request->input('country_name');
-        $country->save();
-        return redirect('/countries')->with('info','New Country has been created!');
+        $district = new District();
+        $district->district_name = $request->input('district_name');
+        $district->save();
+        return redirect('/districts')->with('info','Tạo thành công quận huyện mới!');
     }
 
     /**
@@ -76,8 +76,8 @@ class CountriesController extends Controller
      */
     public function edit($id)
     {
-        $country = Country::find($id);
-        return view('sys_mg.countries.edit')->with('country',$country);
+        $district = District::find($id);
+        return view('sys_mg.districts.edit')->with('district',$district);
     }
 
     /**
@@ -90,13 +90,13 @@ class CountriesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'country_name' => 'required|min:3|unique:countries'
+            'district_name' => 'required|min:3|unique:districts'
         ]);
 
-        $country = Country::find($id);
-        $country->country_name = $request->input('country_name');
-        $country->save();
-        return redirect('/countries')->with('info','Selected Country has been Updated!');
+        $district = District::find($id);
+        $district->district_name = $request->input('district_name');
+        $district->save();
+        return redirect('/districts')->with('info','Cập nhật thành công!');
     }
 
     /**
@@ -107,9 +107,9 @@ class CountriesController extends Controller
      */
     public function destroy($id)
     {
-        $country = Country::find($id);
-        $country->delete();
-        return redirect('/countries')->with('info','Selected Country has been deleted!');
+        $district = District::find($id);
+        $district->delete();
+        return redirect('/districts')->with('info','Xoá thành công!');
     }
 
     /**
@@ -123,9 +123,9 @@ class CountriesController extends Controller
             'search' => 'required'
         ]);
         $str = $request->input('search');
-        $countries = Country::where( 'country_name' , 'LIKE' , '%'.$str.'%' )
-            ->orderBy('country_name','asc')
+        $districts = District::where( 'district_name' , 'LIKE' , '%'.$str.'%' )
+            ->orderBy('district_name','asc')
             ->paginate(4);
-        return view('sys_mg.countries.index')->with([ 'countries' => $countries ,'search' => true ]);
+        return view('sys_mg.districts.index')->with([ 'districts' => $districts ,'search' => true ]);
     }
 }

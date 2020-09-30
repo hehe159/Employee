@@ -12,9 +12,9 @@
                         </div>
                     </div>
                     <div class="col m8 l8 xl8">
-                        <h5 class="pl-15 mt-20">{{$employee->first_name}} {{$employee->last_name}}</h5>
+                        <h5 class="pl-15 mt-20">{{$employee->name}}</h5>
                         <p class="pl-15 mt-20"><i class="material-icons left">location_city</i>{{$employee->address}}</p>
-                        <p class="pl-15"><i class="material-icons left">location_on</i>{{$employee->empCity->city_name}}, {{$employee->empState->state_name}}, {{$employee->empCountry->country_name}}</p>
+                        <p class="pl-15"><i class="material-icons left">location_on</i>{{$employee->empCity->city_name}}, {{$employee->empDistrict->district_name}}, {{$employee->empWard->ward_name}}</p>
                         <p class="pl-15"><i class="material-icons left">person_outline</i>{{$employee->empGender->gender_name}}</p>
                     </div>
                     <!-- Hide this image on small devices -->
@@ -40,9 +40,6 @@
                     </div>
                     <div class="row">
                         <p class="pl-15"><span class="bold col s5 m4 l4 xl3">Email :</span><span class="col m8 l8 xl9">{{$employee->email}}</span></p>
-                    </div>
-                    <div class="row">
-                        <p class="pl-15"><span class="bold col s5 m4 l4 xl3">Salary :</span><span class="col m8 l8 xl9">${{$employee->empSalary->s_amount}}/-</span></p>
                     </div>
                     <div class="row">
                         <p class="pl-15"><span class="bold col s5 m4 l4 xl3">Joined Date :</span><span class="col m8 l8 xl9">{{$employee->join_date}}</span></p>

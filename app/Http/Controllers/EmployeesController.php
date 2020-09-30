@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Employee;
-use App\Department;
-use App\Country;
-use App\City;
-use App\Salary;
-use App\Division;
-use App\State;
-use App\Gender;
+use App\Models\Employee;
+use App\Models\City;
+use App\Models\District;
+use App\Models\Ward;
+use App\Models\Department;
+use App\Models\Division;
+use App\Models\Gender;
 use DB;
 
 class EmployeesController extends Controller
@@ -49,23 +48,23 @@ class EmployeesController extends Controller
         /**
          *  this and other objects works the same as department
          */
-        $countries = Country::orderBy('country_name','asc')->get();
+        
         $cities = City::orderBy('city_name','asc')->get();
-        $states = State::orderBy('state_name','asc')->get();
-        $salaries = Salary::orderBy('s_amount','asc')->get();
+        $districts = District::orderBy('district_name','asc')->get();
+        $wards = Ward::orderBy('ward_name','asc')->get();
+        $departments = Deparment::orderBy('dept_name','asc')->get();
         $divisions = Division::orderBy('division_name','asc')->get();
         $genders = Gender::orderBy('gender_name','asc')->get();
         /**
          *  return the view with an array of all these objects
          */
         return view('employee.create')->with([
-            'departments'  => $departments,
-            'countries'    => $countries,
             'cities'       => $cities,
-            'states'       => $states,
-            'salaries'     => $salaries,
+            'districts'    => $districts,            
+            'wards'        => $wards,
+            'departments'  => $departments,
             'divisions'    => $divisions,
-            'genders'      => $genders
+            'genders'      => $genders,
         ]);
     }
 
@@ -111,7 +110,7 @@ class EmployeesController extends Controller
          */
         $this->setEmployee($employee,$request,$fileNameToStore);
         
-        return redirect('/employees')->with('info','New Employee has been created!');
+        return redirect('/employees')->with('info','Tạo mới Đảng viên thành công!');
     }
 
     /**
@@ -137,22 +136,20 @@ class EmployeesController extends Controller
         /**
          *  this is same as create but with an existing
          *  employee
-         */
-        $departments  = Department::orderBy('dept_name','asc')->get();
-        $countries    = Country::orderBy('country_name','asc')->get();
+         */        
         $cities       = City::orderBy('city_name','asc')->get();
-        $states       = State::orderBy('state_name','asc')->get();
-        $salaries     = Salary::orderBy('s_amount','asc')->get();
+        $districts    = District::orderBy('district_name','asc')->get();
+        $wards        = Ward::orderBy('ward_name','asc')->get();
+        $departments  = Department::orderBy('dept_name','asc')->get();
         $divisions    = Division::orderBy('division_name','asc')->get();
         $genders      = Gender::orderBy('gender_name','asc')->get();
 
         $employee = Employee::find($id);
         return view('employee.edit')->with([
-            'departments'  => $departments,
-            'countries'    => $countries,
             'cities'       => $cities,
-            'states'       => $states,
-            'salaries'     => $salaries,
+            'district'     => $states,
+            'ward'         => $salaries,
+            'departments'  => $departments,
             'divisions'    => $divisions,
             'genders'      => $genders,
             'employee'     => $employee
@@ -186,7 +183,7 @@ class EmployeesController extends Controller
          *  method
          */
         $this->setEmployee($employee,$request,$fileNameToStore);
-        return redirect('/employees')->with('info','Selected Employee has been updated!');
+        return redirect('/employees')->with('info','Cập nhật thành công!');
     }
 
     /**
@@ -200,7 +197,7 @@ class EmployeesController extends Controller
         $employee = Employee::find($id);
         $employee->delete();
         Storage::delete('public/employee_images/'.$employee->picture);
-        return redirect('/employees')->with('info','Selected Employee has been deleted!');
+        return redirect('/employees')->with('info','Xoá thành công!');
     }
 
     /**
@@ -237,18 +234,16 @@ class EmployeesController extends Controller
          *  if we are updating an employee but not updating the image. 
          */
         return $this->validate($request,[
-            'first_name'     =>  'required|min:3|max:50',
-            'last_name'      =>  'required|min:3|max:50',
+            'name'           =>  'required|min:3|max:50',
             'age'            =>  'required|min:2|max:2',
             'address'        =>  'required|min:10|max:500',
             'phone'          =>  'required|max:13',
             'gender'         =>  'required',
             'department'     =>  'required',
             'division'       =>  'required',
-            'salary'         =>  'required',
-            'state'          =>  'required',
             'city'           =>  'required',
-            'country'        =>  'required',
+            'district'       =>  'required',
+            'ward'           =>  'required',
             'join_date'      =>  'required',
             'birth_date'     =>  'required',
             'email'          =>  'required|email|unique:employees,email,'.($id ? : '' ).'|max:250',
@@ -280,23 +275,21 @@ class EmployeesController extends Controller
      * @return Boolean
      */
     private function setEmployee(Employee $employee,Request $request,$fileNameToStore){
-        $employee->first_name   = $request->input('first_name');
-        $employee->last_name    = $request->input('last_name');
-        $employee->email        = $request->input('email');
-        $employee->age          = $request->input('age');
-        $employee->address      = $request->input('address');
-        $employee->phone        = $request->input('phone');
+        $employee->name          = $request->input('name');
+        $employee->email         = $request->input('email');
+        $employee->age           = $request->input('age');
+        $employee->address       = $request->input('address');
+        $employee->phone         = $request->input('phone');
         //Format Date then insert it to the database
-        $employee->join_date    = date('Y-m-d', strtotime(str_replace('-', '/', $request->input('join_date'))));
+        $employee->join_date     = date('Y-m-d', strtotime(str_replace('-', '/', $request->input('join_date'))));
         //Format Date then insert it to the database
-        $employee->birth_date   = date('Y-m-d', strtotime(str_replace('-', '/', $request->input('birth_date'))));
-        $employee->gender_id    = $request->input('gender');
-        $employee->division_id  = $request->input('division');
-        $employee->salary_id    = $request->input('salary'); 
-        $employee->dept_id      = $request->input('department');
-        $employee->city_id      = $request->input('city');
-        $employee->state_id     = $request->input('state');
-        $employee->country_id   = $request->input('country');
+        $employee->birth_date    = date('Y-m-d', strtotime(str_replace('-', '/', $request->input('birth_date'))));
+        $employee->gender_id     = $request->input('gender');
+        $employee->city_id       = $request->input('city');
+        $employee->district_id   = $request->input('district');
+        $employee->ward_id       = $request->input('ward');
+        $employee->dept_id       = $request->input('department');
+        $employee->division_id   = $request->input('division');        
         
         /**
          *  we are checking if there is an image

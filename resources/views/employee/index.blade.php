@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <h4 class="grey-text text-darken-1 center">Manage Employees</h4>
+    <h4 class="grey-text text-darken-1 center">Quản lý Đảng viên</h4>
     {{-- Search --}}
     <div class="row mb-0">
         <ul class="collapsible">
             <li>
                 <div class="collapsible-header">
                     <i class="material-icons">search</i>
-                    Search Employees
+                    Tìm kiếm Đảng viên
                 </div>
                 <div class="collapsible-body">
                     <div class="row mb-0">
@@ -16,21 +16,20 @@
                             @csrf()
                             <div class="input-field col s12 m6 l5 xl6">
                                 <input id="search" type="text" name="search" >
-                                <label for="search">Search Employee</label>
+                                <label for="search">Tìm kiếm Đảng viên</label>
                                 <span class="{{$errors->has('search') ? 'helper-text red-text' : '' }}">{{$errors->has('search') ? $errors->first('search') : '' }}</span>
                             </div>
                             <div class="input-field col s12 m6 l4 xl4">
                                 <select name="options" id="options">
-                                    <option value="first_name">First Name</option>
-                                    <option value="last_name">Last Name</option>
+                                    <option value="name">Họ tên</option>
                                     <option value="email">Email</option>
-                                    <option value="address">Address</option>
+                                    <option value="address">Địa chỉ</option>
                                 </select>
-                                <label for="options">Search by:</label>
+                                <label for="options">Tìm kiếm:</label>
                             </div>
                             <br>
                             <div class="col l2">
-                                <button type="submit" class="btn waves-effect waves-light">Search</button>
+                                <button type="submit" class="btn waves-effect waves-light">Tìm kiếm</button>
                             </div>
                         </form>
                     </div>
@@ -43,17 +42,17 @@
     <div class="card">
         <div class="card-content">
             <div class="row">
-                <h5 class="pl-15 grey-text text-darken-2">Employee List</h5>
+                <h5 class="pl-15 grey-text text-darken-2">Danh sách Đảng viên</h5>
                 <!-- Table that shows Employee List -->
                 <table class="responsive-table col s12 m12 l12 xl12">
                     <thead class="grey-text text-darken-1">
                         <tr>
                             <th>ID</th>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Department</th>
-                            <th>Division</th>
-                            <th>Join Date</th>
+                            <th>Ảnh</th>
+                            <th>Họ tên</th>
+                            <th>Đơn vị</th>
+                            <th>Phòng ban</th>
+                            <th>Ngày vào Đảng</th>
                             <th>Options</th>
                         </tr>
                     </thead>
@@ -66,7 +65,7 @@
                                     <td>
                                     <img class="emp-img" src="{{asset('storage/employee_images/'.$employee->picture)}}">
                                     </td>
-                                    <td>{{$employee->first_name}} {{$employee->last_name}}</td>
+                                    <td>{{$employee->name}}</td>
                                     <td>{{$employee->empDepartment->dept_name}}</td>
                                     <td>{{$employee->empDivision->division_name}}</td>
                                     <td>{{$employee->join_date}}</td>
@@ -78,14 +77,14 @@
                             @if(isset($search))
                                 <tr>
                                     <td colspan="4">
-                                        <a href="/employees" class="right">Show All</a>
+                                        <a href="/employees" class="right">Hiện tất cả</a>
                                     </td>
                                 </tr>
                             @endif
                         @else
                             {{-- if there are no employees then show this message --}}
                             <tr>
-                                <td colspan="5"><h6 class="grey-text text-darken-2 center">No Employees Found!</h6></td>
+                                <td colspan="5"><h6 class="grey-text text-darken-2 center">Không tìm thấy!</h6></td>
                             </tr>
                         @endif
                     </tbody>

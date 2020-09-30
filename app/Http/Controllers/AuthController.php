@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Admin;
+use App\Models\Admin;
 
 class AuthController extends Controller
 {
@@ -34,7 +34,7 @@ class AuthController extends Controller
         }else{
             // Authentication failed...
             //redirect the user with the old input
-            return redirect('/')->withInput()->with('info','Invalid Credentials!');
+            return redirect('/')->withInput()->with('info','Tên đăng nhập hoặc mật khẩu không chính xác!');
         }
     }
 
@@ -43,7 +43,7 @@ class AuthController extends Controller
         //logout the user
         Auth::logout();
         
-        return redirect('/')->with('info','Successfully logged out!');
+        return redirect('/')->with('info','Đăng xuất thành công!');
     }
 
     /**

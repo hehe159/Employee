@@ -54,7 +54,7 @@ class DivisionsController extends Controller
         $division = new Division();
         $division->division_name = $request->input('division_name');
         $division->save();
-        return redirect('/divisions')->with('info','New Division has been created!');
+        return redirect('/divisions')->with('info','Tạo mới thành công!');
     }
 
     /**
@@ -95,7 +95,7 @@ class DivisionsController extends Controller
         $division = Division::find($id);
         $division->division_name = $request->input('division_name');
         $division->save();
-        return redirect('/divisions')->with('info','Selected Division has been updated!');
+        return redirect('/divisions')->with('info','Cập nhật thành công!');
     }
 
     /**
@@ -108,7 +108,7 @@ class DivisionsController extends Controller
     {
         $division = Division::find($id);
         $division->delete();
-        return redirect('/divisions')->with('info','Selected Division has been deleted!');
+        return redirect('/divisions')->with('info','Xoá thành công!');
     }
 
     /**
